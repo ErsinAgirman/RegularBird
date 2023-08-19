@@ -12,9 +12,10 @@ public class Fly : MonoBehaviour
     private bool isStarted= false;
     public static int score = 0;
     private Score scoreScript;
-    
 
-    
+    public AudioClip jumpSound;
+    public AudioClip gameOverSound;
+    public AudioClip scoreSound;
 
     void Start()
     {
@@ -35,8 +36,8 @@ public class Fly : MonoBehaviour
         }
         if(Input.GetMouseButtonDown(0))
         {
-            //Jump
-            rb.velocity = Vector2.up * velocity;
+            rb.velocity = Vector2.up * velocity; //Jump
+            SoundManager.instance.PlaySound(jumpSound);
         }
     }
 
@@ -49,6 +50,7 @@ public class Fly : MonoBehaviour
      private void OnCollisionEnter2D(Collision2D other) 
     {   if (other.gameObject.CompareTag ("DeathArea"))
         {
+            SoundManager.instance.PlaySound(gameOverSound);
             gameManager.GameOver();
         }
     }
@@ -62,6 +64,7 @@ public class Fly : MonoBehaviour
             scoreScript.ScoreUp();
             score++;
             Debug.Log(score);
+            SoundManager.instance.PlaySound(scoreSound);
         }
     }
 
