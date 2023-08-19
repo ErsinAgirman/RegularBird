@@ -6,12 +6,10 @@ using UnityEngine.UI;
 using TMPro;
 public class GameManager : MonoBehaviour
 {   
-    public GameObject GameOverCanvas;
-    // public const string HIGH_SCORE_KEY = "HighScore"; 
-    // Highscore a reset atmak için ekledim
-   
+   public GameObject GameOverCanvas;
    public GameObject[] characterPrefabs;
    private int selectedCharacterIndex = 0;
+   public GameObject[] backgroundPrefabs; // Farklı arkaplan prefabları
 
     private void Start() 
     {
@@ -19,6 +17,7 @@ public class GameManager : MonoBehaviour
         GameOverCanvas.SetActive(false);
         selectedCharacterIndex = UnityEngine.Random.Range(0, characterPrefabs.Length);
         SpawnCharacter();
+        ChangeBackground();
     }
     public void GameOver()
     {
@@ -37,6 +36,13 @@ public class GameManager : MonoBehaviour
         Destroy(GameObject.FindGameObjectWithTag("Player"));
 
         GameObject newCharacter = Instantiate(characterPrefabs[selectedCharacterIndex]);
+    }
+
+    private void ChangeBackground()
+    {
+        int randomBackgroundIndex = Random.Range(0, backgroundPrefabs.Length);
+        Destroy(GameObject.FindGameObjectWithTag("Background")); // Önceki arkaplanı sil
+        Instantiate(backgroundPrefabs[randomBackgroundIndex]); // Yeni arkaplanı oluştur
     }
 
     
