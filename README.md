@@ -5,4 +5,4 @@ I made a flappy bird imitation game
 
 ![Q7_KB7](https://github.com/ErsinAgirman/RegularBird/assets/117252660/9d9e4d75-5f12-418c-b7fe-5bb32c1b3cad)
 
-TO DOWNLOAD GAME =========> https://ryugami.itch.io/regular-birds
+FOR DOWNLOAD GAME =========> https://ryugami.itch.io/regular-birds
